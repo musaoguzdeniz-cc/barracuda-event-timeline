@@ -1,0 +1,24 @@
+[package]
+name = "barracuda-event-timeline"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.95"
+license = "MIT"
+description = "Local Windows event timeline and EVTX viewer"
+
+[[bin]]
+name = "BarracudaEventTimeline"
+path = "src/main.rs"
+
+[dependencies]
+base64 = "0.22"
+chrono = { version = "0.4", default-features = false, features = ["clock", "serde"] }
+eframe = { version = "0.37.0", default-features = false, features = ["clipboard", "default_fonts", "glow"] }
+rfd = "0.17.2"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+windows-sys = { version = "0.61.2", features = ["Win32_System_SystemInformation", "Win32_System_Threading"] }
+
+[profile.release]
+lto = "thin"
+strip = true
